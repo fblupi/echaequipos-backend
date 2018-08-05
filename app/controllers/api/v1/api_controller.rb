@@ -6,13 +6,27 @@ module Api
 
       respond_to :json
       rescue_from ActiveRecord::RecordNotFound do
-        self.status = :unauthorized
-        self.content_type = 'application/json'
-        self.response_body = { error: 'You need to sign in or sign up before continuing.' }.to_json
+        error_response(:unauthorized, 'You need to sign in or sign up before continuing.')
       end
+
+      private
 
       def current_user
         current_user ||= current_v1_user
+      end
+
+      def bad_request(message: 'Bad request.')
+        error_response(:bad_request, message)
+      end
+
+      def unauthorized(message: 'Unauthorized.')
+        error_response(:unauthorized, message)
+      end
+
+      def error_response(status, message)
+        self.status = status
+        self.content_type = 'application/json'
+        self.response_body = { error: message }.to_json
       end
     end
   end
