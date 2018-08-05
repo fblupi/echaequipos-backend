@@ -1,0 +1,2 @@
+json.id affiliation.id
+json.affiliation_type affiliation.affiliation_type
