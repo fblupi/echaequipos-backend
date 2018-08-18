@@ -9,11 +9,14 @@ Rails.application.routes.draw do
       namespace :affiliations do
         resources :downgrades, only: [:update], defaults: { format: :json }
         resources :invitations, only: [:create, :update], defaults: { format: :json }
+        resources :positions, only: [:show], defaults: { format: :json }
+        resources :positions, only: [:update], defaults: { format: :json }
         resources :upgrades, only: [:update], defaults: { format: :json }
       end
       namespace :groups do
         resources :affiliations, only: [:show], defaults: { format: :json }
       end
+      resources :positions, only: [:index], defaults: { format: :json }
       namespace :users do
         resources :affiliations, only: [:index], defaults: { format: :json }
       end
