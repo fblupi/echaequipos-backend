@@ -15,7 +15,7 @@ module Api
         end
 
         def check_auth_admin
-          unauthorized(message: 'You are not an admin of this group.') unless @affiliation&.group&.is_admin?(current_user)
+          unauthorized(message: 'You are not an admin of this group.') unless @affiliation&.group&.admin?(current_user)
         end
       end
     end
