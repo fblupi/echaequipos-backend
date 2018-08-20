@@ -6,11 +6,12 @@ class Affiliation < ApplicationRecord
 
   belongs_to :group
   belongs_to :user
+  has_and_belongs_to_many :positions
 
   enum affiliation_type: AFFILIATION_TYPES, _prefix: true
 
   AFFILIATION_TYPES.each do |type|
-    define_method "is_#{type}?" do
+    define_method "#{type}?" do
       affiliation_type == type
     end
   end

@@ -9,7 +9,7 @@ class Group < ApplicationRecord
       users.select { |user| user.affiliations.where(group: self, affiliation_type: type).exists? }
     end
 
-    define_method "is_#{type}?" do |user|
+    define_method "#{type}?" do |user|
       public_send("#{type}s").include?(user)
     end
   end

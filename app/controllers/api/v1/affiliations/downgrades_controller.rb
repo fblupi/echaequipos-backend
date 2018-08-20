@@ -6,7 +6,7 @@ module Api
         before_action :check_auth_admin, only: [:update]
 
         def update
-          return bad_request(message: 'The user is already a normal user in this group.') if @affiliation.is_normal?
+          return bad_request(message: 'The user is already a normal user in this group.') if @affiliation.normal?
           @affiliation.downgrade_normal
         end
       end

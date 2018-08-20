@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_05_091750) do
+ActiveRecord::Schema.define(version: 2018_08_07_181946) do
 
   create_table "affiliations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "group_id", null: false
@@ -22,9 +22,25 @@ ActiveRecord::Schema.define(version: 2018_08_05_091750) do
     t.index ["user_id"], name: "index_affiliations_on_user_id"
   end
 
+  create_table "affiliations_positions", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "affiliation_id", null: false
+    t.bigint "position_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "positions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name_en", null: false
+    t.string "name_es", null: false
+    t.string "abbr_en", null: false
+    t.string "abbr_es", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
