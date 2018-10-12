@@ -44,8 +44,6 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
-    archive-zip (0.11.0)
-      io-like (~> 0.3.0)
     arel (9.0.0)
     bcrypt (3.1.12)
     bindex (0.5.0)
@@ -54,18 +52,6 @@ GEM
     builder (3.2.3)
     byebug (10.0.2)
     cancancan (2.2.0)
-    capybara (3.5.1)
-      addressable
-      mini_mime (>= 0.1.3)
-      nokogiri (~> 1.8)
-      rack (>= 1.6.0)
-      rack-test (>= 0.6.3)
-      xpath (~> 3.1)
-    childprocess (0.9.0)
-      ffi (~> 1.0, >= 1.0.11)
-    chromedriver-helper (1.2.0)
-      archive-zip (~> 0.10)
-      nokogiri (~> 1.8)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -84,6 +70,8 @@ GEM
     devise-jwt (0.5.7)
       devise (~> 4.0)
       warden-jwt_auth (~> 0.3.5)
+    diff-lcs (1.3)
+    docile (1.3.1)
     dry-auto_inject (0.4.6)
       dry-container (>= 0.3.4)
     dry-configurable (0.7.0)
@@ -93,6 +81,13 @@ GEM
       dry-configurable (~> 0.1, >= 0.1.3)
     erubi (1.7.1)
     execjs (2.7.0)
+    factory_bot (4.11.1)
+      activesupport (>= 3.0.0)
+    factory_bot_rails (4.11.1)
+      factory_bot (~> 4.11.1)
+      railties (>= 3.0.0)
+    faker (1.9.1)
+      i18n (>= 0.7)
     ffi (1.9.25)
     font-awesome-rails (4.7.0.4)
       railties (>= 3.2, < 6.0)
@@ -103,7 +98,6 @@ GEM
       tilt
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
-    io-like (0.3.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -113,6 +107,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
+    json (2.1.0)
     jwt (2.1.0)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
@@ -207,8 +202,24 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
+    rspec-core (3.8.0)
+      rspec-support (~> 3.8.0)
+    rspec-expectations (3.8.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.8.0)
+    rspec-mocks (3.8.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.8.0)
+    rspec-rails (3.8.0)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.8.0)
+      rspec-expectations (~> 3.8.0)
+      rspec-mocks (~> 3.8.0)
+      rspec-support (~> 3.8.0)
+    rspec-support (3.8.0)
     ruby_dep (1.5.0)
-    rubyzip (1.2.1)
     sass (3.5.7)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -220,9 +231,11 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    selenium-webdriver (3.14.0)
-      childprocess (~> 0.5)
-      rubyzip (~> 1.2)
+    simplecov (0.16.1)
+      docile (~> 1.1)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.2)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -261,8 +274,6 @@ GEM
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
-    xpath (3.1.0)
-      nokogiri (~> 1.8)
 
 PLATFORMS
   ruby
@@ -271,11 +282,11 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
   cancancan
-  capybara (>= 2.15, < 4.0)
-  chromedriver-helper
   coffee-rails (~> 4.2)
   devise
   devise-jwt
+  factory_bot_rails
+  faker
   jbuilder (~> 2.5)
   letter_opener
   listen (>= 3.0.5, < 3.2)
@@ -283,8 +294,9 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.0)
   rails_admin
+  rspec-rails
   sass-rails (~> 5.0)
-  selenium-webdriver
+  simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
