@@ -20,5 +20,6 @@ class User < ApplicationRecord
     group = Group.create(name: name, location: location)
     return unless group
     Affiliation.create(group: group, user: self, affiliation_type: 'admin')
+    group
   end
 end
