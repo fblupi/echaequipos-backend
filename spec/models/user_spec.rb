@@ -11,7 +11,7 @@ RSpec.describe User, type: :model do
 
   describe 'group creation' do
     before(:each) do
-      @user = build(:v1_user)
+      @user = create(:v1_user)
     end
 
     it 'does not create a group if the mandatory params are missing' do
@@ -32,17 +32,12 @@ RSpec.describe User, type: :model do
 
   describe 'check affiliations' do
     before(:each) do
-      @user = build(:v1_user)
-      @group_invitation = build(:v1_group)
-      @group_invitation_other = build(:v1_group)
-      @group_normal = build(:v1_group)
-      @group_normal_other = build(:v1_group)
-      @group_admin = build(:v1_group)
-      Affiliation.create(user: @user, group: @group_invitation, affiliation_type: 'invitation')
-      Affiliation.create(user: @user, group: @group_invitation_other, affiliation_type: 'invitation')
-      Affiliation.create(user: @user, group: @group_normal, affiliation_type: 'normal')
-      Affiliation.create(user: @user, group: @group_normal_other, affiliation_type: 'normal')
-      Affiliation.create(user: @user, group: @group_admin, affiliation_type: 'admin')
+      @user = create(:v1_user)
+      create(:v1_affiliation, user: @user, group: create(:v1_group), affiliation_type: 'invitation')
+      create(:v1_affiliation, user: @user, group: create(:v1_group), affiliation_type: 'invitation')
+      create(:v1_affiliation, user: @user, group: create(:v1_group), affiliation_type: 'normal')
+      create(:v1_affiliation, user: @user, group: create(:v1_group), affiliation_type: 'normal')
+      create(:v1_affiliation, user: @user, group: create(:v1_group), affiliation_type: 'admin')
     end
 
     it 'checks current affiliations' do

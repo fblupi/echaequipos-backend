@@ -10,10 +10,10 @@ RSpec.describe Group, type: :model do
 
   describe 'exist user' do
     before(:each) do
-      @user = build(:v1_user)
-      @other_user = build(:v1_user)
-      @group = build(:v1_group)
-      @affiliation = Affiliation.create(group: @group, user: @user, affiliation_type: 'admin')
+      @user = create(:v1_user)
+      @other_user = create(:v1_user)
+      @group = create(:v1_group)
+      create(:v1_affiliation, group: @group, user: @user, affiliation_type: 'admin')
     end
 
     it 'exists user' do
@@ -27,20 +27,20 @@ RSpec.describe Group, type: :model do
 
   describe 'check types' do
     before(:each) do
-      @user_invitation = build(:v1_user)
-      @user_normal = build(:v1_user)
-      @user_normal_other = build(:v1_user)
-      @user_normal_and_other = build(:v1_user)
-      @user_founder = build(:v1_user)
-      @user_admin = build(:v1_user)
-      @group = build(:v1_group)
+      @user_invitation = create(:v1_user)
+      @user_normal = create(:v1_user)
+      @user_normal_other = create(:v1_user)
+      @user_normal_and_other = create(:v1_user)
+      @user_founder = create(:v1_user)
+      @user_admin = create(:v1_user)
+      @group = create(:v1_group)
 
-      Affiliation.create(group: @group, user: @user_invitation, affiliation_type: 'invitation')
-      Affiliation.create(group: @group, user: @user_normal, affiliation_type: 'normal')
-      Affiliation.create(group: @group, user: @user_normal_other, affiliation_type: 'normal')
-      Affiliation.create(group: @group, user: @user_normal_and_other, affiliation_type: 'normal')
-      Affiliation.create(group: @group, user: @user_founder, affiliation_type: 'admin')
-      Affiliation.create(group: @group, user: @user_admin, affiliation_type: 'admin')
+      create(:v1_affiliation, group: @group, user: @user_invitation, affiliation_type: 'invitation')
+      create(:v1_affiliation, group: @group, user: @user_normal, affiliation_type: 'normal')
+      create(:v1_affiliation, group: @group, user: @user_normal_other, affiliation_type: 'normal')
+      create(:v1_affiliation, group: @group, user: @user_normal_and_other, affiliation_type: 'normal')
+      create(:v1_affiliation, group: @group, user: @user_founder, affiliation_type: 'admin')
+      create(:v1_affiliation, group: @group, user: @user_admin, affiliation_type: 'admin')
     end
 
     it 'checks invitation' do
@@ -73,8 +73,8 @@ RSpec.describe Group, type: :model do
 
   describe 'invite user' do
     before(:each) do
-      @user = build(:v1_user)
-      @group = build(:v1_group)
+      @user = create(:v1_user)
+      @group = create(:v1_group)
     end
 
     it 'invites user' do

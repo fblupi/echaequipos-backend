@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe Affiliation, type: :model do
   describe 'validations' do
     before(:each) do
-      @user = build(:v1_user)
-      @other_user = build(:v1_user)
-      @group = build(:v1_group)
+      @user = create(:v1_user)
+      @other_user = create(:v1_user)
+      @group = create(:v1_group)
     end
 
     it 'affiliation_type is required' do
@@ -29,9 +29,9 @@ RSpec.describe Affiliation, type: :model do
 
   describe 'affiliation types' do
     before(:each) do
-      @affiliation_invitation = build(:v1_affiliation, affiliation_type: 'invitation')
-      @affiliation_normal = build(:v1_affiliation, affiliation_type: 'normal')
-      @affiliation_admin = build(:v1_affiliation, affiliation_type: 'admin')
+      @affiliation_invitation = create(:v1_affiliation, affiliation_type: 'invitation')
+      @affiliation_normal = create(:v1_affiliation, affiliation_type: 'normal')
+      @affiliation_admin = create(:v1_affiliation, affiliation_type: 'admin')
     end
 
     it 'checks invitation' do
@@ -55,7 +55,7 @@ RSpec.describe Affiliation, type: :model do
 
   describe 'change types' do
     before(:each) do
-      @affiliation = build(:v1_affiliation)
+      @affiliation = create(:v1_affiliation)
     end
 
     it 'accepts invitation' do
