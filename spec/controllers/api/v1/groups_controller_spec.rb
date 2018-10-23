@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::GroupsController, type: :controller do
-  @user = login_v1_user
+  login_v1_user
 
   before :each do
     request.env['HTTP_ACCEPT'] = 'application/json'
