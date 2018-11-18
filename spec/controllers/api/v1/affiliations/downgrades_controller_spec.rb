@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::Affiliations::UpgradesController, type: :controller do
+RSpec.describe Api::V1::Affiliations::DowngradesController, type: :controller do
   login_v1_user
 
   before :each do
@@ -11,18 +11,18 @@ RSpec.describe Api::V1::Affiliations::UpgradesController, type: :controller do
   end
 
   describe '#update' do
-    it 'upgrades normal affiliation' do
-      @other_affiliation = create(:v1_affiliation, user: @other_user, group: @group, affiliation_type: 'normal')
+    it 'downgrades admin affiliation' do
+      @other_affiliation = create(:v1_affiliation, user: @other_user, group: @group, affiliation_type: 'admin')
       expect((put :update, params: { id: @other_affiliation.id }).response_code).to eq(200)
     end
 
-    it 'does not upgrade invitation affiliation' do
+    it 'does not downgrade invitation affiliation' do
       @other_affiliation = create(:v1_affiliation, user: @other_user, group: @group, affiliation_type: 'invitation')
       expect((put :update, params: { id: @other_affiliation.id }).response_code).to eq(400)
     end
 
-    it 'does not upgrade admin affiliation' do
-      @other_affiliation = create(:v1_affiliation, user: @other_user, group: @group, affiliation_type: 'admin')
+    it 'does not downgrade normal affiliation' do
+      @other_affiliation = create(:v1_affiliation, user: @other_user, group: @group, affiliation_type: 'normal')
       expect((put :update, params: { id: @other_affiliation.id }).response_code).to eq(400)
     end
 
