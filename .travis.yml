@@ -1,3 +1,7 @@
 language: ruby
 rvm:
   - 2.5.1
+services:
+  - mysql
+before_install:
+  - mysql -e 'CREATE DATABASE echaequipos_backend_test;'
