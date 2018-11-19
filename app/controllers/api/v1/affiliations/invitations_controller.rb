@@ -6,8 +6,12 @@ module Api
         before_action :check_auth_current_user, only: [:update]
 
         def create
-          email = params.require(:v1_affiliations_invitations)[:email]
-          group_id = params.require(:v1_affiliations_invitations)[:group_id]
+          begin
+            email = params.require(:v1_affiliations_invitations)[:email]
+            group_id = params.require(:v1_affiliations_invitations)[:group_id]
+          rescue ActionController::ParameterMissing
+            bad_request
+          end
           return bad_request if !email || !group_id
 
           group = current_user.groups.find_by_id(group_id)
