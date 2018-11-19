@@ -20,6 +20,6 @@ class Group < ApplicationRecord
   end
 
   def exist_user?(user)
-    users.include?(user)
+    user.nil? || users.include?(user)
   end
 end
