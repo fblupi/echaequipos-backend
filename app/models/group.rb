@@ -2,6 +2,7 @@ class Group < ApplicationRecord
   validates :name, presence: true
 
   has_many :affiliations
+  has_many :matches
   has_many :users, through: :affiliations
 
   Affiliation::AFFILIATION_TYPES.each do |type|

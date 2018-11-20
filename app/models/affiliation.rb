@@ -6,6 +6,8 @@ class Affiliation < ApplicationRecord
 
   belongs_to :group
   belongs_to :user
+  has_many :created_matches, foreign_key: 'affiliation_id', class_name: 'Match'
+  has_many :players
   has_and_belongs_to_many :positions
 
   enum affiliation_type: AFFILIATION_TYPES, _prefix: true
