@@ -68,22 +68,22 @@ RSpec.describe Match, type: :model do
     end
 
     it 'does not create a match with bad min players' do
-      expect { @match.confirm! }.to raise_error(ActiveRecord::RecordInvalid)
+      expect { @match.confirm }.to raise_error(ActiveRecord::RecordInvalid)
     end
 
     it 'does not create a match with bad max players' do
-      @player.confirm!
-      @other_player.confirm!
-      @another_player.confirm!
-      expect { @match.confirm! }.to raise_error(ActiveRecord::RecordInvalid)
+      @player.confirm
+      @other_player.confirm
+      @another_player.confirm
+      expect { @match.confirm }.to raise_error(ActiveRecord::RecordInvalid)
     end
 
     it 'does not create a match with bad max players' do
-      @player.confirm!
-      @other_player.confirm!
-      @another_player.confirm!
-      @another_player.quit!
-      expect { @match.confirm! }.to change(@match, :status).to('confirmed')
+      @player.confirm
+      @other_player.confirm
+      @another_player.confirm
+      @another_player.quit
+      expect { @match.confirm }.to change(@match, :status).to('confirmed')
     end
   end
 
@@ -108,7 +108,7 @@ RSpec.describe Match, type: :model do
 
     it 'allows to update attributes of proposed match' do
       @match.update(min_players: 0)
-      @match.confirm!
+      @match.confirm
       expect { @match.update!(name: 'test') }.to_not raise_error
       expect { @match.update!(date: Time.zone.now + 1.week) }.to_not raise_error
       expect { @match.update!(duration: 15) }.to_not raise_error
@@ -121,7 +121,7 @@ RSpec.describe Match, type: :model do
     end
 
     it 'does not allow to update attributes of finished match' do
-      @match.finish!
+      @match.finish
       expect { @match.update!(name: 'test') }.to raise_error(ActiveRecord::RecordInvalid)
       expect { @match.update!(date: Time.zone.now + 1.week) }.to raise_error(ActiveRecord::RecordInvalid)
       expect { @match.update!(duration: 15) }.to raise_error(ActiveRecord::RecordInvalid)

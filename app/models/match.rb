@@ -24,11 +24,11 @@ class Match < ApplicationRecord
     end
   end
 
-  def confirm!
+  def confirm
     update!(status: 'confirmed')
   end
 
-  def finish!
+  def finish
     update!(status: 'finished')
   end
 

@@ -8,11 +8,11 @@ class Player < ApplicationRecord
 
   scope :attending, -> { where(attendance: true) }
 
-  def confirm!
+  def confirm
     update!(attendance: true)
   end
 
-  def quit!
+  def quit
     update!(attendance: false)
   end
 

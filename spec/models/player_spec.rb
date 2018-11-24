@@ -42,23 +42,23 @@ RSpec.describe Player, type: :model do
     end
 
     it 'updates the attending value of a proposal match' do
-      expect { @player.confirm! }.to change(@player, :attendance).to(true)
-      expect { @player.quit! }.to change(@player, :attendance).to(false)
+      expect { @player.confirm }.to change(@player, :attendance).to(true)
+      expect { @player.quit }.to change(@player, :attendance).to(false)
     end
 
     it 'does not update the attending value to confirmed of a non proposal match' do
       @match.status = 'confirmed'
-      expect { @player.confirm! }.to raise_error(ActiveRecord::RecordInvalid)
+      expect { @player.confirm }.to raise_error(ActiveRecord::RecordInvalid)
       @match.status = 'finished'
-      expect { @player.confirm! }.to raise_error(ActiveRecord::RecordInvalid)
+      expect { @player.confirm }.to raise_error(ActiveRecord::RecordInvalid)
     end
 
     it 'does not update the attending value to not confirmed of a non proposal match' do
-      @player.confirm!
+      @player.confirm
       @match.status = 'confirmed'
-      expect { @player.quit! }.to raise_error(ActiveRecord::RecordInvalid)
+      expect { @player.quit }.to raise_error(ActiveRecord::RecordInvalid)
       @match.status = 'finished'
-      expect { @player.quit! }.to raise_error(ActiveRecord::RecordInvalid)
+      expect { @player.quit }.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
 
@@ -70,7 +70,7 @@ RSpec.describe Player, type: :model do
       @match = create(:v1_match, group: @group, affiliation: @affiliation, status: 'proposal')
       expect { @player = Player.create!(affiliation: @affiliation, match: @match, attendance: true) }.to change(Player.attending, :count).by(1)
       expect { @other_player = Player.create!(affiliation: @other_affiliation, match: @match, attendance: false) }.to_not change(Player.attending, :count)
-      expect { @other_player.confirm! }.to change(Player.attending, :count).by(1)
+      expect { @other_player.confirm }.to change(Player.attending, :count).by(1)
     end
   end
 end
