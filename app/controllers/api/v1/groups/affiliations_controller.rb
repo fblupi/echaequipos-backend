@@ -4,10 +4,10 @@ module Api
       class AffiliationsController < ApiController
         include Api::V1::GroupsConcern
 
-        before_action :load_group, only: [:show]
-        before_action :check_auth, only: [:show]
+        before_action :load_group, only: [:index]
+        before_action :check_auth, only: [:index]
 
-        def show
+        def index
           @affiliations = @group.affiliations
         end
       end

@@ -1,4 +1,5 @@
 class Match < ApplicationRecord
+  INITIAL_STATUS = 'proposal'.freeze
   MATCH_STATUSES = %w[proposal confirmed finished].freeze
 
   belongs_to :group

@@ -5,7 +5,7 @@ FactoryBot.define do
     name { Faker::Football.competition }
     date { Faker::Date.forward(30) }
     duration { Faker::Number.between(30, 90) }
-    status { 'proposal' }
+    status { Match::INITIAL_STATUS }
     min_players { Faker::Number.between(8, 12) }
     max_players { Faker::Number.between(16, 20) }
     location { Faker::Address.city }
