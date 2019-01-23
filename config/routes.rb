@@ -17,6 +17,9 @@ Rails.application.routes.draw do
         resources :affiliations, only: [:index], defaults: { format: :json }, controller: 'groups/affiliations'
         resources :matches, only: [:create], defaults: { format: :json }, controller: 'groups/matches'
       end
+      namespace :matches do
+        resources :confirms, only: [:update], defaults: { format: :json }
+      end
       resources :positions, only: [:index], defaults: { format: :json }
       namespace :users do
         resources :affiliations, only: [:index], defaults: { format: :json }
