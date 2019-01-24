@@ -1,7 +1,7 @@
 module Api
   module V1
     module Matches
-      class ConfirmsController < BaseController
+      class ConfirmationsController < BaseController
         before_action :load_match, only: [:update]
         before_action :check_auth_admin, only: [:update]
 

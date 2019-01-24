@@ -18,7 +18,8 @@ Rails.application.routes.draw do
         resources :matches, only: [:create], defaults: { format: :json }, controller: 'groups/matches'
       end
       namespace :matches do
-        resources :confirms, only: [:update], defaults: { format: :json }
+        resources :confirmations, only: [:update], defaults: { format: :json }
+        resources :finishes, only: [:update], defaults: { format: :json }
       end
       resources :positions, only: [:index], defaults: { format: :json }
       namespace :users do
