@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # User authentication
-gem 'devise'
+gem 'devise', '>= 4.6.0'
 gem 'devise-jwt'
 
 # User authorization
