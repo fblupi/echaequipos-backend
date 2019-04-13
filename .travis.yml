@@ -3,5 +3,8 @@ rvm:
   - 2.6.2
 services:
   - mysql
+before_script:
+  - cp config/database.travis.yml config/database.yml
+  - cp config/secrets.travis.yml config/secrets.yml
 before_install:
   - mysql -e 'CREATE DATABASE echaequipos_backend_test;'
