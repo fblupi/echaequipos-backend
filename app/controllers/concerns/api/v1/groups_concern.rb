@@ -8,6 +8,11 @@ module Api
         bad_request unless @group
       end
 
+      def load_match
+        @match = Match.find_by_id(params[:id])
+        bad_request unless @match
+      end
+
       def check_auth
         unauthorized(message: 'You are not authorized to this groups.') unless @group.exist_user?(current_user)
       end
