@@ -4,8 +4,8 @@ module Api
       class UpgradesController < ApiController
         include Api::V1::AffiliationsConcern
 
-        before_action :load_affiliation, only: [:update]
-        before_action :check_auth_admin, only: [:update]
+        before_action :load_affiliation_by_id, only: [:update]
+        before_action :check_affiliation_auth_admin, only: [:update]
 
         def update
           return bad_request(message: 'The user has not accepted the invitation yet.') if @affiliation.invitation?

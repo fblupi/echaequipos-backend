@@ -3,22 +3,26 @@ module Api
     module GroupsConcern
       include ActiveSupport::Concern
 
-      def load_group
-        @group = Group.find_by_id(params[:group_id])
-        bad_request unless @group
+      def load_group_by_group_id
+        load_group(:group_id)
       end
 
-      def load_match
-        @match = Match.find_by_id(params[:id])
-        bad_request unless @match
-      end
-
-      def check_auth
+      def check_group_auth
         unauthorized(message: 'You are not authorized to this groups.') unless @group.exist_user?(current_user)
       end
 
-      def check_admin_auth
+      def check_group_auth_admin
         unauthorized(message: 'You have no admin authorization in this groups.') unless @group.admin?(current_user)
+      end
+
+      def group_params
+        params.require(:v1_group).permit(:name, :location)
+      end
+
+      private
+
+      def load_group(param)
+        @group = Group.find(params[param])
       end
     end
   end

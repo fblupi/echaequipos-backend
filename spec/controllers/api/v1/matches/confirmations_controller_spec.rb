@@ -22,20 +22,20 @@ RSpec.describe Api::V1::Matches::ConfirmationsController, type: :controller do
 
   describe '#create' do
     it 'confirmations the match' do
-      expect((put :update, params: { id: @match }).response_code).to eq(200)
+      expect((put :update, params: { match_id: @match }).response_code).to eq(200)
     end
 
     it 'does not confirm the match if there is a bad number of players' do
-      expect((put :update, params: { id: @bad_match }).response_code).to eq(500)
+      expect((put :update, params: { match_id: @bad_match }).response_code).to eq(500)
     end
 
     it 'does not confirm the match if the user is not admin of the group' do
-      expect((put :update, params: { id: @other_match }).response_code).to eq(401)
-      expect((put :update, params: { id: @another_match }).response_code).to eq(401)
+      expect((put :update, params: { match_id: @other_match }).response_code).to eq(401)
+      expect((put :update, params: { match_id: @another_match }).response_code).to eq(401)
     end
 
     it 'does not confirm the match if the match does not exist' do
-      expect((put :update, params: { id: 0 }).response_code).to eq(400)
+      expect((put :update, params: { match_id: 0 }).response_code).to eq(401)
     end
   end
 end

@@ -4,8 +4,8 @@ module Api
       class InvitationsController < ApiController
         include Api::V1::AffiliationsConcern
 
-        before_action :load_affiliation, only: [:update]
-        before_action :check_auth_current_user, only: [:update]
+        before_action :load_affiliation_by_id, only: [:update]
+        before_action :check_affiliation_auth, only: [:update]
 
         def create
           begin
@@ -16,8 +16,8 @@ module Api
           end
           return bad_request if !email || !group_id
 
-          group = current_user.groups.find_by_id(group_id)
-          user = User.find_by_email(email)
+          group = current_user.groups.find(group_id)
+          user = User.find_by(email: email)
           return unauthorized(message: 'You are not authorized to invite people to this group.') if !group || !current_user.affiliations.find_by_group_id(group_id)&.admin?
           return bad_request(message: 'The user does not exists or it is currently in the group.') if group.exist_user?(user)
           @affiliation = group.invite_user(user)

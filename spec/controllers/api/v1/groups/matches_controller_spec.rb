@@ -35,33 +35,7 @@ RSpec.describe Api::V1::Groups::MatchesController, type: :controller do
     end
 
     it 'does not create the match if the group does not exist' do
-      expect((post :create, params: { group_id: 0 }).response_code).to eq(400)
-    end
-  end
-
-  describe '#update' do
-    before :each do
-      @match = create(:v1_match, group: @group, affiliation: @affiliation)
-    end
-    it 'updates the match' do
-      expect((put :update, params: { id: @match.id, group_id: @group, v1_groups_matches: { duration: 2 } }).response_code).to eq(200)
-    end
-
-    it 'does not update the match if bad params' do
-      expect((put :update, params: { id: @match.id, group_id: @group, v1_groups_matches: { duration: -1 } }).response_code).to eq(400)
-    end
-
-    it 'does not update the match if the user is not admin of the group' do
-      expect((put :update, params: { id: @match.id, group_id: @other_group }).response_code).to eq(401)
-      expect((put :update, params: { id: @match.id, group_id: @another_group }).response_code).to eq(401)
-    end
-
-    it 'does not update the match if the group does not exist' do
-      expect((put :update, params: { id: @match.id, group_id: 0 }).response_code).to eq(400)
-    end
-
-    it 'does not update the match if the match does not exist' do
-      expect((put :update, params: { id: 0, group_id: @group }).response_code).to eq(400)
+      expect((post :create, params: { group_id: 0 }).response_code).to eq(401)
     end
   end
 end

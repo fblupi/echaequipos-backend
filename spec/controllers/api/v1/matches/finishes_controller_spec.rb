@@ -19,16 +19,16 @@ RSpec.describe Api::V1::Matches::FinishesController, type: :controller do
 
   describe '#create' do
     it 'finishes the match' do
-      expect((put :update, params: { id: @match }).response_code).to eq(200)
+      expect((put :update, params: { match_id: @match }).response_code).to eq(200)
     end
 
     it 'does not finish the match if the user is not admin of the group' do
-      expect((put :update, params: { id: @other_match }).response_code).to eq(401)
-      expect((put :update, params: { id: @another_match }).response_code).to eq(401)
+      expect((put :update, params: { match_id: @other_match }).response_code).to eq(401)
+      expect((put :update, params: { match_id: @another_match }).response_code).to eq(401)
     end
 
     it 'does not finish the match if the match does not exist' do
-      expect((put :update, params: { id: 0 }).response_code).to eq(400)
+      expect((put :update, params: { match_id: 0 }).response_code).to eq(401)
     end
   end
 end

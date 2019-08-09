@@ -20,7 +20,7 @@ RSpec.describe Api::V1::Groups::AffiliationsController, type: :controller do
     end
 
     it 'does not get affiliation if the groups does not exist' do
-      expect((get :index, params: { group_id: 0 }).response_code).to eq(400)
+      expect((get :index, params: { group_id: 0 }).response_code).to eq(401)
     end
   end
 end
