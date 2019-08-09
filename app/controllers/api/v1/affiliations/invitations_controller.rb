@@ -1,7 +1,9 @@
 module Api
   module V1
     module Affiliations
-      class InvitationsController < BaseController
+      class InvitationsController < ApiController
+        include Api::V1::AffiliationConcern
+
         before_action :load_affiliation, only: [:update]
         before_action :check_auth_current_user, only: [:update]
 
