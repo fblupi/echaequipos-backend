@@ -2,7 +2,7 @@ module Api
   module V1
     module Affiliations
       class UpgradesController < ApiController
-        include Api::V1::AffiliationConcern
+        include Api::V1::AffiliationsConcern
 
         before_action :load_affiliation, only: [:update]
         before_action :check_auth_admin, only: [:update]

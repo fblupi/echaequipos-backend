@@ -1,6 +1,6 @@
 module Api
   module V1
-    module AffiliationConcern
+    module AffiliationsConcern
       include ActiveSupport::Concern
 
       def load_affiliation
