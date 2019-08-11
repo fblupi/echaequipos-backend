@@ -10,13 +10,17 @@ RSpec.describe Api::V1::Groups::AffiliationsController, type: :controller do
     @affiliation = create(:v1_affiliation, user: controller.current_v1_user, group: @group)
   end
 
-  describe '#show' do
+  describe '#index' do
     it 'get affiliation' do
-      expect((get :show, params: { id: @group.id }).response_code).to eq(200)
+      expect((get :index, params: { group_id: @group.id }).response_code).to eq(200)
     end
 
-    it 'does not get affiliation if the user is not in the group' do
-      expect((get :show, params: { id: @other_group }).response_code).to eq(401)
+    it 'does not get affiliation if the user is not in the groups' do
+      expect((get :index, params: { group_id: @other_group }).response_code).to eq(401)
+    end
+
+    it 'does not get affiliation if the groups does not exist' do
+      expect((get :index, params: { group_id: 0 }).response_code).to eq(401)
     end
   end
 end

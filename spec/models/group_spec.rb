@@ -86,4 +86,18 @@ RSpec.describe Group, type: :model do
       expect(@group.invite_user(@user)).to be nil
     end
   end
+
+
+  describe 'check affiliation by user' do
+    before(:each) do
+      @user = create(:v1_user)
+      @group = create(:v1_group)
+      @affiliation = create(:v1_affiliation, user: @user, group: @group)
+    end
+
+    it 'check affiliation of the groups is the one of the user' do
+      expect(@group.affiliation(@user)).to eq(@affiliation)
+      expect(@group.affiliation(nil)).to eq(nil)
+    end
+  end
 end

@@ -12,8 +12,8 @@ require 'simplecov'
 SimpleCov.start 'rails' do
   add_filter NO_COV
 end
-require 'coveralls'
-Coveralls.wear! 'rails'
+#require 'coveralls'
+#Coveralls.wear! 'rails'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 # Prevent database truncation if the environment is production

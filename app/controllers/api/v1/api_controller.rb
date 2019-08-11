@@ -6,7 +6,7 @@ module Api
 
       respond_to :json
       rescue_from ActiveRecord::RecordNotFound do
-        error_response(:unauthorized, 'You need to sign in or sign up before continuing.')
+        unauthorized(message: 'You need to sign in or sign up before continuing.')
       end
 
       private
