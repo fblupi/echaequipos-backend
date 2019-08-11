@@ -4,7 +4,7 @@ module Api
       class PositionsController < ApiController
         include Api::V1::AffiliationsConcern
 
-        before_action :load_affiliation_by_id, only: [:show, :update]
+        before_action :load_affiliation_by_affiliation_id, only: [:show, :update]
         before_action :check_affiliation_auth, only: [:update]
 
         def show
@@ -12,7 +12,7 @@ module Api
         end
 
         def update
-          position_ids = params.require(:v1_affiliations_positions)[:position_ids]
+          position_ids = params.require(:v1_affiliation_positions)[:position_ids]
           @affiliation.positions = Position.find(position_ids)
         end
       end

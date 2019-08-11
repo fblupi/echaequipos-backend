@@ -16,7 +16,7 @@ module Api
       end
 
       def group_params
-        params.require(:v1_group).permit(:name, :location)
+        params.require(:v1_groups).permit(:name, :location)
       end
 
       private

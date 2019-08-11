@@ -9,6 +9,8 @@ module Api
 
         def update
           @match.finish
+        rescue ActiveRecord::RecordInvalid => error
+          error_request(message: error.message)
         end
       end
     end

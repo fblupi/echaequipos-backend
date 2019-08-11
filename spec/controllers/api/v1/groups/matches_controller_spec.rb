@@ -22,11 +22,11 @@ RSpec.describe Api::V1::Groups::MatchesController, type: :controller do
         max_players: Faker::Number.between(16, 20),
         location: Faker::Address.city
       }
-      expect((post :create, params: { group_id: @group, v1_groups_matches: match_params }).response_code).to eq(200)
+      expect((post :create, params: { group_id: @group, v1_group_matches: match_params }).response_code).to eq(200)
     end
 
     it 'does not create the match if bad params' do
-      expect((post :create, params: { group_id: @group, v1_groups_matches: { name: 'test' } }).response_code).to eq(400)
+      expect((post :create, params: { group_id: @group, v1_group_matches: { name: 'test' } }).response_code).to eq(400)
     end
 
     it 'does not create the match if the user is not admin of the group' do
