@@ -9,11 +9,11 @@ RSpec.describe Api::V1::GroupsController, type: :controller do
 
   describe '#create' do
     it 'create group' do
-      expect((post :create, params: { v1_group: { name: 'Notingan Prisa', location: 'Granada'}}).response_code).to eq(201)
+      expect((post :create, params: { v1_groups: { name: 'Notingan Prisa', location: 'Granada'}}).response_code).to eq(201)
     end
 
     it 'does not create group w/o name' do
-      expect((post :create, params: { v1_group: { location: 'Granada'}}).response_code).to eq(400)
+      expect((post :create, params: { v1_groups: { location: 'Granada'}}).response_code).to eq(400)
     end
   end
 end

@@ -7,6 +7,10 @@ module Api
         load_affiliation(:id)
       end
 
+      def load_affiliation_by_affiliation_id
+        load_affiliation(:affiliation_id)
+      end
+
       def check_affiliation_auth
         unauthorized(message: 'You are not authorized to change this affiliation.') unless @affiliation&.user == current_user
       end

@@ -4,7 +4,7 @@ module Api
       class DowngradesController < ApiController
         include Api::V1::AffiliationsConcern
 
-        before_action :load_affiliation_by_id, only: [:update]
+        before_action :load_affiliation_by_affiliation_id, only: [:update]
         before_action :check_affiliation_auth_admin, only: [:update]
 
         def update

@@ -16,11 +16,11 @@ RSpec.describe Api::V1::MatchesController, type: :controller do
 
   describe '#update' do
     it 'updates the match' do
-      expect((put :update, params: { id: @match.id, v1_matches: { duration: 2 } }).response_code).to eq(200)
+      expect((put :update, params: { id: @match.id, v1_match: { duration: 2 } }).response_code).to eq(200)
     end
 
     it 'does not update the match if bad params' do
-      expect((put :update, params: { id: @match.id, v1_matches: { duration: -1 } }).response_code).to eq(400)
+      expect((put :update, params: { id: @match.id, v1_match: { duration: -1 } }).response_code).to eq(400)
     end
 
     it 'does not update the match if the user is not admin of the group' do

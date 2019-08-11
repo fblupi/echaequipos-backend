@@ -20,11 +20,11 @@ module Api
       end
 
       def match_params
-        default_match_params(:v1_matches)
+        default_match_params(:v1_match)
       end
 
       def group_match_params
-        default_match_params(:v1_groups_matches)
+        default_match_params(:v1_group_matches)
       end
 
       private
