@@ -4,8 +4,8 @@ module Api
       class PositionsController < ApiController
         include Api::V1::AffiliationsConcern
 
-        before_action :load_affiliation_by_id, only: [:show, :update]
-        before_action :check_affiliation_auth, only: [:update]
+        before_action :load_affiliation, only: [:show, :update]
+        before_action :check_auth_current_user, only: [:update]
 
         def show
           @positions = @affiliation.positions

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_20_153920) do
+ActiveRecord::Schema.define(version: 2018_08_07_181946) do
 
   create_table "affiliations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "group_id", null: false
@@ -34,34 +34,6 @@ ActiveRecord::Schema.define(version: 2018_11_20_153920) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "matches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "group_id", null: false
-    t.bigint "affiliation_id", null: false
-    t.string "name", null: false
-    t.datetime "date", null: false
-    t.integer "duration", null: false
-    t.integer "status", null: false
-    t.integer "min_players", null: false
-    t.integer "max_players", null: false
-    t.string "location", null: false
-    t.float "latitude"
-    t.float "longitude"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["affiliation_id"], name: "index_matches_on_affiliation_id"
-    t.index ["group_id"], name: "index_matches_on_group_id"
-  end
-
-  create_table "players", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "match_id", null: false
-    t.bigint "affiliation_id", null: false
-    t.boolean "attendance", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["affiliation_id"], name: "index_players_on_affiliation_id"
-    t.index ["match_id"], name: "index_players_on_match_id"
   end
 
   create_table "positions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
