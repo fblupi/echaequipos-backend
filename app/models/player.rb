@@ -6,6 +6,8 @@ class Player < ApplicationRecord
   validate :affiliation_match
   validate :attendance_of_confirmed_match
 
+  delegate :user, to: :affiliation
+
   scope :attending, -> { where(attendance: true) }
 
   def confirm

@@ -15,15 +15,15 @@ RSpec.describe Api::V1::Players::RejectionsController, type: :controller do
 
   describe '#create' do
     it 'reject the invitation to the match' do
-      #expect((put :update, params: { player_id: @player.id }).response_code).to eq(200)
+      expect((put :update, params: { player_id: @player.id }).response_code).to eq(200)
     end
 
     it 'does not reject the invitation if the player does not belong to the user' do
-      #expect((put :update, params: { player_id: @other_player.id }).response_code).to eq(401)
+      expect((put :update, params: { player_id: @other_player.id }).response_code).to eq(401)
     end
 
     it 'does not reject the invitation if no player provided' do
-      #expect((put :update, params: { player_id: 0 }).response_code).to eq(401)
+      expect((put :update, params: { player_id: 0 }).response_code).to eq(401)
     end
   end
 end
