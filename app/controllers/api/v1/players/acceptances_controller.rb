@@ -9,8 +9,6 @@ module Api
 
         def update
           @player.confirm
-        rescue ActiveRecord::RecordInvalid => error
-          error_request(message: error.message)
         end
       end
     end

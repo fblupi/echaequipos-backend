@@ -30,6 +30,10 @@ class Affiliation < ApplicationRecord
     change_affiliation_type('normal')
   end
 
+  def user_admin?(user)
+    group&.admin?(user)
+  end
+
   private
 
   def change_affiliation_type(type)

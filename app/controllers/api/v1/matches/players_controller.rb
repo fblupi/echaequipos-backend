@@ -9,13 +9,8 @@ module Api
         before_action :check_match_auth_admin, only: [:create]
 
         def create
-          begin
-            affiliation_id = params.require(:v1_match_players)[:affiliation_id]
-          rescue ActionController::ParameterMissing
-            bad_request
-          end
-
-          affiliation = Affiliation.find(affiliation_id)
+          affiliation = @match.group.affiliations.find(params.require(:v1_match_players)[:affiliation_id])
+          return bad_request(message: 'The player already exists.') if @match.players.find_by(affiliation: affiliation)
           @player = Player.create(match: @match, affiliation: affiliation)
           check_valid_player
         end

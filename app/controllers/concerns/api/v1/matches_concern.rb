@@ -16,7 +16,7 @@ module Api
       end
 
       def check_match_auth_admin
-        unauthorized(message: 'You are not an admin of this match.') unless @match&.group&.admin?(current_user)
+        unauthorized(message: 'You are not an admin of this match.') unless @match&.user_admin?(current_user)
       end
 
       def match_params

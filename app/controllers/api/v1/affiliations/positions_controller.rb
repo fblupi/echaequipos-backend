@@ -12,8 +12,7 @@ module Api
         end
 
         def update
-          position_ids = params.require(:v1_affiliation_positions)[:position_ids]
-          @affiliation.positions = Position.find(position_ids)
+          @affiliation.positions = Position.find(params.require(:v1_affiliation_positions)[:position_ids])
         end
       end
     end

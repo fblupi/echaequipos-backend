@@ -22,4 +22,8 @@ class User < ApplicationRecord
     Affiliation.create(group: group, user: self, affiliation_type: 'admin')
     group
   end
+
+  def group_admin?(group)
+    affiliations.find_by(group: group)&.admin?
+  end
 end

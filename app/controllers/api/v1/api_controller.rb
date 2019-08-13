@@ -9,6 +9,14 @@ module Api
         unauthorized(message: 'You need to sign in or sign up before continuing.')
       end
 
+      rescue_from ActiveRecord::RecordInvalid do |error|
+        error_request(message: error.message)
+      end
+
+      rescue_from ActionController::ParameterMissing do
+        bad_request(message: 'Parameter missing')
+      end
+
       private
 
       def current_user

@@ -33,6 +33,10 @@ class Match < ApplicationRecord
     update!(status: 'finished')
   end
 
+  def user_admin?(user)
+    group&.admin?(user)
+  end
+
   private
 
   def affiliation_group
