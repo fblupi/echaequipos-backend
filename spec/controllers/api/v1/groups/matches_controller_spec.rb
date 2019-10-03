@@ -15,11 +15,11 @@ RSpec.describe Api::V1::Groups::MatchesController, type: :controller do
   describe '#create' do
     it 'creates the match' do
       match_params = {
-        name: Faker::Football.competition,
-        date: Faker::Date.forward(30),
-        duration: Faker::Number.between(30, 90),
-        min_players: Faker::Number.between(8, 12),
-        max_players: Faker::Number.between(16, 20),
+        name: Faker::Sports::Football.competition,
+        date: Faker::Date.forward(days: 30),
+        duration: Faker::Number.between(from: 30, to: 90),
+        min_players: Faker::Number.between(from: 8, to: 12),
+        max_players: Faker::Number.between(from: 16, to: 20),
         location: Faker::Address.city
       }
       expect((post :create, params: { group_id: @group, v1_group_matches: match_params }).response_code).to eq(200)

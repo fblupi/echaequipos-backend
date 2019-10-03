@@ -6,7 +6,7 @@ FactoryBot.define do
     last_name { Faker::Name.last_name }
     confirmed_at { Date.today.at_beginning_of_day }
     phone_number { Faker::PhoneNumber.cell_phone }
-    birth_date { Faker::Date.birthday(18, 65) }
+    birth_date { Faker::Date.birthday(min_age: 18, max_age: 65) }
     admin { false }
     jti { '103c0f90-807d-4da5-a431-23b277297a23' }
   end
