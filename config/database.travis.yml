@@ -1,0 +1,6 @@
+test:
+  adapter: mysql2
+  encoding: utf8
+  username: travis
+  password:
+  database: echaequipos_backend_test
