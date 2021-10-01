@@ -17,7 +17,9 @@ RSpec.describe Api::V1::Affiliations::PositionsController, type: :controller do
 
   describe '#update' do
     it 'update positions' do
-      expect((put :update, params: { affiliation_id: @affiliation.id, v1_affiliation_positions: { position_ids: [@position.id] } }).response_code).to eq(200)
+      expect((put :update,
+                  params: { affiliation_id: @affiliation.id,
+                            v1_affiliation_positions: { position_ids: [@position.id] } }).response_code).to eq(200)
     end
   end
 end

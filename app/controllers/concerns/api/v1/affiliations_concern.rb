@@ -12,7 +12,9 @@ module Api
       end
 
       def check_affiliation_auth
-        unauthorized(message: 'You are not authorized to change this affiliation.') unless @affiliation&.user == current_user
+        unless @affiliation&.user == current_user
+          unauthorized(message: 'You are not authorized to change this affiliation.')
+        end
       end
 
       def check_affiliation_auth_admin

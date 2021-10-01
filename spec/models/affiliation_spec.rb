@@ -13,17 +13,29 @@ RSpec.describe Affiliation, type: :model do
     end
 
     it 'user is required' do
-      expect { Affiliation.create!(group: @group, affiliation_type: 'normal') }.to raise_error(ActiveRecord::RecordInvalid)
+      expect do
+        Affiliation.create!(group: @group, affiliation_type: 'normal')
+      end.to raise_error(ActiveRecord::RecordInvalid)
     end
 
     it 'group is required' do
-      expect { Affiliation.create!(user: @user, affiliation_type: 'normal') }.to raise_error(ActiveRecord::RecordInvalid)
+      expect do
+        Affiliation.create!(user: @user, affiliation_type: 'normal')
+      end.to raise_error(ActiveRecord::RecordInvalid)
     end
 
     it 'uniqueness of pair user group required' do
-      expect { Affiliation.create!(user: @user, group: @group, affiliation_type: 'normal') }.to change(Affiliation, :count).by(1)
-      expect { Affiliation.create!(user: @other_user, group: @group, affiliation_type: 'normal') }.to change(Affiliation, :count).by(1)
-      expect { Affiliation.create!(user: @user, group: @group, affiliation_type: 'normal') }.to raise_error(ActiveRecord::RecordInvalid)
+      expect do
+        Affiliation.create!(user: @user, group: @group, affiliation_type: 'normal')
+      end.to change(Affiliation, :count).by(1)
+      expect do
+        Affiliation.create!(user: @other_user, group: @group,
+                            affiliation_type: 'normal')
+      end.to change(Affiliation, :count).by(1)
+      expect do
+        Affiliation.create!(user: @user, group: @group,
+                            affiliation_type: 'normal')
+      end.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
 

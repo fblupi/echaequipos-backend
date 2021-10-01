@@ -17,8 +17,10 @@ class User < ApplicationRecord
 
   def create_group(name: nil, location: nil)
     return if name.blank?
+
     group = Group.create(name: name, location: location)
     return unless group
+
     Affiliation.create(group: group, user: self, affiliation_type: 'admin')
     group
   end

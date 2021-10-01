@@ -1,0 +1,12 @@
+{
+  "[ruby]": {
+    "editor.defaultFormatter": "castwide.solargraph",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.rulers": [120],
+    "editor.renderWhitespace": "boundary",
+  },
+  "solargraph.useBundler": true,
+  "solargraph.diagnostics": true,
+  "solargraph.formatting": true,
+}

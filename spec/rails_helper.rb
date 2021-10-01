@@ -14,7 +14,7 @@ SimpleCov.start 'rails' do
 end
 require 'coveralls'
 Coveralls.wear! 'rails'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?

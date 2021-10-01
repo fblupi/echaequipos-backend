@@ -30,6 +30,7 @@ class Player < ApplicationRecord
 
   def attendance_of_confirmed_match
     return if match&.proposal? || !persisted?
+
     errors.add(:attendance, 'you cannot change the attendance of a confirmed match') if attendance_changed?
   end
 end

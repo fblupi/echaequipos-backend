@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "castwide.solargraph",
+    "davidanson.vscode-markdownlint",
+    "hridoy.rails-snippets",
+    "kaiwood.endwise",
+    "mrmlnc.vscode-duplicate",
+    "streetsidesoftware.code-spell-checker",
+  ]
+}

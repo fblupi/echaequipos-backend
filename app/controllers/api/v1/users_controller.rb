@@ -2,7 +2,7 @@ module Api
   module V1
     class UsersController < ApiController
       def update_device_token
-        @user = current_user if current_user.update_attributes!(token_params)
+        @user = current_user if current_user.update(token_params)
       end
 
       private
