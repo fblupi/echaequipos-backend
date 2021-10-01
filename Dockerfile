@@ -1,4 +1,4 @@
-FROM ruby:2.6.2
+FROM ruby:3.0.2
 
 WORKDIR /echaequipos-backend
 COPY . /echaequipos-backend

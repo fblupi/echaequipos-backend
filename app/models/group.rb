@@ -21,6 +21,7 @@ class Group < ApplicationRecord
 
   def invite_user(user)
     return if !user || exist_user?(user)
+
     Affiliation.create(group: self, user: user, affiliation_type: 'invitation')
   end
 

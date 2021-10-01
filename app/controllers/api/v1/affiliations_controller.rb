@@ -7,11 +7,13 @@ module Api
       before_action :check_affiliation_auth, only: [:update]
 
       def index
-        @affiliations = { current: current_user.current_affiliations, invitations: current_user.invitation_affiliations }
+        @affiliations = { current: current_user.current_affiliations,
+                          invitations: current_user.invitation_affiliations }
       end
 
       def update
         return bad_request(message: 'You have already accepted the invitation.') unless @affiliation.invitation?
+
         @affiliation.accept_invitation
       end
     end

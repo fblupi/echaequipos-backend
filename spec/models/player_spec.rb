@@ -28,8 +28,12 @@ RSpec.describe Player, type: :model do
     end
 
     it 'does not create a player with a non proposal match' do
-      expect { Player.create!(affiliation: @affiliation, match: @confirmed_match) }.to raise_error(ActiveRecord::RecordInvalid)
-      expect { Player.create!(affiliation: @affiliation, match: @finished_match) }.to raise_error(ActiveRecord::RecordInvalid)
+      expect do
+        Player.create!(affiliation: @affiliation, match: @confirmed_match)
+      end.to raise_error(ActiveRecord::RecordInvalid)
+      expect do
+        Player.create!(affiliation: @affiliation, match: @finished_match)
+      end.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
 
@@ -68,8 +72,14 @@ RSpec.describe Player, type: :model do
       @affiliation = create(:v1_affiliation, group: @group)
       @other_affiliation = create(:v1_affiliation, group: @group)
       @match = create(:v1_match, group: @group, affiliation: @affiliation, status: Match::INITIAL_STATUS)
-      expect { @player = Player.create!(affiliation: @affiliation, match: @match, attendance: true) }.to change(Player.attending, :count).by(1)
-      expect { @other_player = Player.create!(affiliation: @other_affiliation, match: @match, attendance: false) }.to_not change(Player.attending, :count)
+      expect do
+        @player = Player.create!(affiliation: @affiliation, match: @match,
+                                 attendance: true)
+      end.to change(Player.attending, :count).by(1)
+      expect do
+        @other_player = Player.create!(affiliation: @other_affiliation, match: @match,
+                                       attendance: false)
+      end.to_not change(Player.attending, :count)
       expect { @other_player.confirm }.to change(Player.attending, :count).by(1)
     end
   end

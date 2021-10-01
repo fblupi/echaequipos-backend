@@ -33,7 +33,8 @@ RSpec.describe Api::V1::AffiliationsController, type: :controller do
 
     it 'updates an affiliation' do
       @group = create(:v1_group)
-      @affiliation = create(:v1_affiliation, user: controller.current_v1_user, group: @group, affiliation_type: 'invitation')
+      @affiliation = create(:v1_affiliation, user: controller.current_v1_user, group: @group,
+                                             affiliation_type: 'invitation')
       expect((put :update, params: { id: @affiliation.id }).response_code).to eq(200)
     end
   end

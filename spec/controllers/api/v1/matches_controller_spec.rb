@@ -9,7 +9,8 @@ RSpec.describe Api::V1::MatchesController, type: :controller do
     @other_group = create(:v1_group)
     @another_group = create(:v1_group)
     @affiliation = create(:v1_affiliation, user: controller.current_v1_user, group: @group, affiliation_type: 'admin')
-    @other_affiliation = create(:v1_affiliation, user: controller.current_v1_user, group: @other_group, affiliation_type: 'normal')
+    @other_affiliation = create(:v1_affiliation, user: controller.current_v1_user, group: @other_group,
+                                                 affiliation_type: 'normal')
     @match = create(:v1_match, group: @group, affiliation: @affiliation)
     @other_match = create(:v1_match, group: @other_group, affiliation: @other_affiliation)
   end

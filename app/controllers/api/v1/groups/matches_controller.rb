@@ -9,7 +9,8 @@ module Api
         before_action :check_group_auth_admin, only: [:create]
 
         def create
-          @match = Match.create(group_match_params.merge(creator: @group.affiliation(current_user), group: @group, status: Match::INITIAL_STATUS))
+          @match = Match.create(group_match_params.merge(creator: @group.affiliation(current_user), group: @group,
+                                                         status: Match::INITIAL_STATUS))
           check_valid_match
         end
       end

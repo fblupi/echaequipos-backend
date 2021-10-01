@@ -49,9 +49,16 @@ class Match < ApplicationRecord
 
   def players_before_confirm
     return unless confirmed?
+
     attending_players = players.attending.count
-    errors.add(:status, 'you cannot confirm a match if the min number of player has not been reached') if attending_players < min_players
-    errors.add(:status, 'you cannot confirm a match if there are more players than the max players number') if attending_players > max_players
+    if attending_players < min_players
+      errors.add(:status,
+                 'you cannot confirm a match if the min number of player has not been reached')
+    end
+    if attending_players > max_players
+      errors.add(:status,
+                 'you cannot confirm a match if there are more players than the max players number')
+    end
   end
 
   def blocked_fields

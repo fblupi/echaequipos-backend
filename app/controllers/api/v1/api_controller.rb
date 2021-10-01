@@ -32,7 +32,7 @@ module Api
       end
 
       def error_request(message: 'Error.')
-        error_response(:error, message)
+        error_response(:internal_server_error, message)
       end
 
       def error_response(status, message)

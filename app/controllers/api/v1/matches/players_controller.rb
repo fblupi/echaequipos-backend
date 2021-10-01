@@ -11,6 +11,7 @@ module Api
         def create
           affiliation = @match.group.affiliations.find(params.require(:v1_match_players)[:affiliation_id])
           return bad_request(message: 'The player already exists.') if @match.players.find_by(affiliation: affiliation)
+
           @player = Player.create(match: @match, affiliation: affiliation)
           check_valid_player
         end

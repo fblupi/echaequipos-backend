@@ -30,7 +30,8 @@ module Api
       private
 
       def default_match_params(key)
-        params.require(key).permit(:name, :date, :duration, :min_players, :max_players, :location, :latitude, :longitude)
+        params.require(key).permit(:name, :date, :duration, :min_players, :max_players, :location, :latitude,
+                                   :longitude)
       end
 
       def load_match(param)
