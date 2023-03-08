@@ -191,6 +191,7 @@ GEM
       letter_opener (~> 1.0)
       railties (>= 3.2)
     libv8-node (15.14.0.1-x86_64-darwin-20)
+    libv8-node (15.14.0.1-x86_64-linux)
     listen (3.7.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -216,6 +217,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.12.4-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.12.4-x86_64-linux)
+      racc (~> 1.4)
     orm_adapter (0.5.0)
     parallel (1.20.1)
     parser (3.0.2.0)
@@ -225,7 +228,7 @@ GEM
     puma (5.4.0)
       nio4r (~> 2.0)
     racc (1.5.2)
-    rack (2.2.3)
+    rack (2.2.6.3)
     rack-pjax (1.1.0)
       nokogiri (~> 1.5)
       rack (>= 1.1)
@@ -422,6 +425,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap
